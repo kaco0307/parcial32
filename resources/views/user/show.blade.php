@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ $admin->name ?? 'Show Admin' }}
+    {{ $user->name ?? 'Show User' }}
 @endsection
 
 @section('content')
@@ -11,34 +11,30 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Admin</span>
+                            <span class="card-title">Show User</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('admins.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>Correo:</strong>
-                            {{ $admin->correo }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Nombre:</strong>
-                            {{ $admin->nombre }}
+                            <strong>Name:</strong>
+                            {{ $user->name }}
                         </div>
                         <div class="form-group">
                             <strong>Cedula:</strong>
-                            {{ $admin->cedula }}
-                        </div>
-                        <div class="form-group">
-                            <strong>Password:</strong>
-                            {{ $admin->Password }}
+                            {{ $user->cedula }}
                         </div>
                         <div class="form-group">
                             <strong>Fecha Naci:</strong>
-                            {{ $admin->Fecha_naci }}
+                            {{ $user->Fecha_naci }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Email:</strong>
+                            {{ $user->email }}
                         </div>
 
                     </div>

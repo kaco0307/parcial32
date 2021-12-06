@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Admin
  *
  * @property $id
+ * @property $correo
  * @property $nombre
  * @property $cedula
  * @property $Password
@@ -22,6 +23,7 @@ class Admin extends Model
 {
     
     static $rules = [
+		'correo' => 'required | unique:admins',
 		'nombre' => 'required',
 		'cedula' => 'required | unique:admins',
 		'Password' => 'required',
@@ -35,7 +37,13 @@ class Admin extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','cedula','Password','Fecha_naci'];
+
+    protected $hidden = [
+      'Password',
+  ];
+
+    protected $table = "admins";
+    protected $fillable = ['correo','nombre','cedula','Password','Fecha_naci'];
 
 
 

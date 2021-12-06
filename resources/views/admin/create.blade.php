@@ -16,7 +16,7 @@
                         <span class="card-title">Create Admin</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('Admins.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admins.store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('admin.form')

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Admin
+    User
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Admin') }}
+                                {{ __('User') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('admins.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -36,30 +36,28 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Correo</th>
-										<th>Nombre</th>
+										<th>Name</th>
 										<th>Cedula</th>
-										<th>Password</th>
 										<th>Fecha Naci</th>
+										<th>Email</th>
 
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($admins as $admin)
+                                    @foreach ($users as $user)
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
-											<td>{{ $admin->correo }}</td>
-											<td>{{ $admin->nombre }}</td>
-											<td>{{ $admin->cedula }}</td>
-											<td>{{ $admin->Password }}</td>
-											<td>{{ $admin->Fecha_naci }}</td>
+											<td>{{ $user->name }}</td>
+											<td>{{ $user->cedula }}</td>
+											<td>{{ $user->Fecha_naci }}</td>
+											<td>{{ $user->email }}</td>
 
                                             <td>
-                                                <form action="{{ route('admins.destroy',$admin->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('admins.show',$admin->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('admins.edit',$admin->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
@@ -72,7 +70,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $admins->links() !!}
+                {!! $users->links() !!}
             </div>
         </div>
     </div>

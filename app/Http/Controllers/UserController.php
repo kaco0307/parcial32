@@ -2,26 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 /**
- * Class AdminController
+ * Class UserController
  * @package App\Http\Controllers
  */
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     public function index()
     {
-        $admins = Admin::paginate();
+        $users = User::paginate();
 
-        return view('admin.index', compact('admins'))
-            ->with('i', (request()->input('page', 1) - 1) * $admins->perPage());
+        return view('user.index', compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
     /**
@@ -31,8 +38,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $admin = new Admin();
-        return view('admin.create', compact('admin'));
+        $user = new User();
+        return view('user.create', compact('user'));
     }
 
     /**
@@ -43,12 +50,12 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Admin::$rules);
+        request()->validate(User::$rules);
 
-        $admin = Admin::create($request->all());
+        $user = User::create($request->all());
 
-        return redirect()->route('admins.index')
-            ->with('success', 'Admin created successfully.');
+        return redirect()->route('users.index')
+            ->with('success', 'User created successfully.');
     }
 
     /**
@@ -59,9 +66,9 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        $admin = Admin::find($id);
+        $user = User::find($id);
 
-        return view('admin.show', compact('admin'));
+        return view('user.show', compact('user'));
     }
 
     /**
@@ -72,26 +79,26 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $admin = Admin::find($id);
+        $user = User::find($id);
 
-        return view('admin.edit', compact('admin'));
+        return view('user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  Admin $admin
+     * @param  User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, User $user)
     {
-        request()->validate(Admin::$rules);
+        request()->validate(User::$rules);
 
-        $admin->update($request->all());
+        $user->update($request->all());
 
-        return redirect()->route('admins.index')
-            ->with('success', 'Admin updated successfully');
+        return redirect()->route('users.index')
+            ->with('success', 'User updated successfully');
     }
 
     /**
@@ -101,9 +108,9 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $admin = Admin::find($id)->delete();
+        $user = User::find($id)->delete();
 
-        return redirect()->route('admins.index')
-            ->with('success', 'Admin deleted successfully');
+        return redirect()->route('users.index')
+            ->with('success', 'User deleted successfully');
     }
 }

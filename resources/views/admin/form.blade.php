@@ -2,6 +2,11 @@
     <div class="box-body">
         
         <div class="form-group">
+            {{ Form::label('correo') }}
+            {{ Form::text('correo', $admin->correo, ['class' => 'form-control' . ($errors->has('correo') ? ' is-invalid' : ''), 'placeholder' => 'Correo']) }}
+            {!! $errors->first('correo', '<div class="invalid-feedback">:message</p>') !!}
+        </div>
+        <div class="form-group">
             {{ Form::label('nombre') }}
             {{ Form::text('nombre', $admin->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
             {!! $errors->first('nombre', '<div class="invalid-feedback">:message</p>') !!}
