@@ -18,7 +18,7 @@
 
                              <div class="float-right">
                                 <a href="{{ route('mascotas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear Nueva) }}
+                                  {{ __('Create New') }}
                                 </a>
                               </div>
                         </div>
@@ -56,11 +56,11 @@
 
                                             <td>
                                                 <form action="{{ route('mascotas.destroy',$mascota->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('mascotas.show',$mascota->id) }}"><i class="fa fa-fw fa-eye"></i> Moatrar</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('mascotas.edit',$mascota->id) }}"><i class="fa fa-fw fa-edit"></i> Editar</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('mascotas.show',$mascota->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('mascotas.edit',$mascota->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -14,7 +14,7 @@
                             <span class="card-title">Show Mascota</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('Mascotas.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('mascotas.index') }}"> Back</a>
                         </div>
                     </div>
 
